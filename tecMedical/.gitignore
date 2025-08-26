@@ -33,5 +33,9 @@ build/
 .vscode/
 
 ### VS Code ###
+# Ignorar solo el archivo de configuración local
 tecMedical/src/main/resources/application.properties
+
+# Subir todo lo demás de resources
+!tecMedical/src/main/resources/
 

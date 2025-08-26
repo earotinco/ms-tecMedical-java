@@ -1,0 +1,14 @@
+#spring.application.name=tecMedical
+
+
+#spring.datasource.url=jdbc:mysql://localhost:3306/bd_tecmedical?useSSL=false&serverTimezone=UTC
+#spring.datasource.username=root//cambiar al user de tener otro nombre 
+#spring.datasource.password=//colocar  la contraseña de su bd
+
+#spring.jpa.hibernate.ddl-auto=update 
+#spring.jpa.show-sql=true 
+#spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
+
+
+CREAR EL ARCHIVO application.properties dentro de src/main/resources 
+y colocar toda la parte superior
