@@ -9,6 +9,11 @@
 #spring.jpa.show-sql=true 
 #spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
 
+# Para login personalizado 
+
+#spring.security.user.name= 
+
+spring.security.user.password= 
 
 CREAR EL ARCHIVO application.properties dentro de src/main/resources 
 y colocar toda la parte superior
