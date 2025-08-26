@@ -1,10 +1,10 @@
-package com.cib.ms_tecMedical;
+package com.cib.tecMedical;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class MsTecMedicalApplicationTests {
+class TecMedicalApplicationTests {
 
 	@Test
 	void contextLoads() {

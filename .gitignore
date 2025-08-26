@@ -1,0 +1,11 @@
+#Eclipse
+/.metadata/
+
+
+
+# Maven
+target/
+*.log
+
+# Ignorar archivo de configuración local
+application.properties

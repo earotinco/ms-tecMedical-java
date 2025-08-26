@@ -1,13 +1,13 @@
-package com.cib.ms_tecMedical;
+package com.cib.tecMedical;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MsTecMedicalApplication {
+public class TecMedicalApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MsTecMedicalApplication.class, args);
+		SpringApplication.run(TecMedicalApplication.class, args);
 	}
 
 }

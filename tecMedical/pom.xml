@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.cib</groupId>
-	<artifactId>ms-tecMedical</artifactId>
+	<artifactId>tecMedical</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>ms-tecMedical</name>
-	<description>Proyecto para la empresa TECMEDICAL</description>
+	<name>tecMedical</name>
+	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>
 		<license/>
