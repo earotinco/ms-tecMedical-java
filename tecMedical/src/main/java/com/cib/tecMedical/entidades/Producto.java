@@ -1,61 +1,34 @@
 package com.cib.tecMedical.entidades;
-import jakarta.persistence.*; 
 
-import lombok.Data; 
+import jakarta.persistence.*;
+import lombok.Data;
 
-@Entity 
-
-@Table(name="Producto") 
-
-@Data 
-
+@Data
+@Entity
+@Table(name = "producto") 
 public class Producto {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_producto") 
+    private Integer idProducto;
 
+    @Column(name = "nombre", nullable = false) 
+    private String nombre;
 
-		 
+    @Column(name = "descripcion")
+    private String descripcion;
 
-		@Id 
+    @Column(name = "precio", nullable = false)
+    private double precio;
 
-		@GeneratedValue(strategy = GenerationType.IDENTITY) 
+    @Column(name = "stock", nullable = false) 
+    private Integer stock = 0;
 
-		private Long idProducto; 
+    @Column(name = "estado") // 
+    private Boolean estado = true;
 
-		 
-
-		@Column(nullable = false) 
-
-		private String nombre; 
-
-		 
-
-		private String descripcion; 
-
-		 
-
-		@Column(nullable = false) 
-
-		private double precio; 
-
-		 
-
-		@Column(nullable = false) 
-
-		private Integer Stock = 0; 
-
-		 
-
-		private Boolean estado = true; 
-
-		 
-
-		@ManyToOne(fetch = FetchType.LAZY) 
-
-	@JoinColumn(name = "IdCategoria", nullable = false) 
-
-	private Categoria categoria; 
-
-	
-
-	 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_categoria", nullable = false) 
+    private Categoria categoria;
 }

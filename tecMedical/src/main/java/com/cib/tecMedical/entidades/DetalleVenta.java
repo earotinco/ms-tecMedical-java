@@ -1,7 +1,5 @@
 package com.cib.tecMedical.entidades;
 
-
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -14,37 +12,36 @@ import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import lombok.Data;
 
-
 @Entity
-@Table(name = "DetalleVenta")
+@Table(name = "detalle_venta") 
 @Data
 public class DetalleVenta {
-	
-	 @Id
-	    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	    private Integer idDetalleVenta;
 
-	    @ManyToOne
-	    @JoinColumn(name = "IdVenta", nullable = false)
-	    private Venta venta;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_detalle_venta") 
+    private Integer idDetalleVenta;
 
-	    @ManyToOne
-	    @JoinColumn(name = "IdProducto", nullable = false)
-	    private Producto producto;
+    @ManyToOne
+    @JoinColumn(name = "id_venta", nullable = false)
+    private Venta venta;
 
-	    @Column(nullable = false)
-	    private int cantidad;
+    @ManyToOne
+    @JoinColumn(name = "id_producto", nullable = false) 
+    private Producto producto;
 
-	    @Column(nullable = false)
-	    private double precioUnitario;
+    @Column(nullable = false)
+    private int cantidad;
 
-	    @Column(nullable = false)
-	    private double subtotal;
+    @Column(name = "precio_unitario", nullable = false) 
+    private double precioUnitario;
 
-	    @PrePersist
-	    @PreUpdate
-	    public void calcularSubtotal() {
-	        this.subtotal = this.cantidad * this.precioUnitario;
-	    }
+    @Column(nullable = false)
+    private double subtotal;
 
+    @PrePersist
+    @PreUpdate
+    public void calcularSubtotal() {
+        this.subtotal = this.cantidad * this.precioUnitario;
+    }
 }

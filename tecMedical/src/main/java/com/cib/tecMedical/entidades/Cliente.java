@@ -12,29 +12,29 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "clientes")
+@Table(name = "cliente") 
 public class Cliente {
-	 @Id
-	    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	    @Column(name = "IdCliente")
-	    private Long idCliente;
 
-	    @Column(name = "Nombre", nullable = false, length = 50)
-	    private String nombre;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_cliente")
+    private Integer idCliente;
 
-	    @Column(name = "Apellido", nullable = false, length = 50)
-	    private String apellido;
+    @Column(name = "nombre", nullable = false, length = 50) 
+    private String nombre;
 
-	    @Column(name = "DNI", unique = true, length = 20)
-	    private String dni;
+    @Column(name = "apellido", nullable = false, length = 50) 
+    private String apellido;
 
-	    @Column(name = "Correo", unique = true, length = 100)
-	    private String correo;
+    @Column(name = "dni", unique = true, length = 20)
+    private String dni;
 
-	    @Column(name = "Telefono", length = 20)
-	    private String telefono;
+    @Column(name = "correo", unique = true, length = 100)
+    private String correo;
 
-	    @Column(name = "Direccion", length = 255)
-	    private String direccion;
-    
+    @Column(name = "telefono", length = 20) 
+    private String telefono;
+
+    @Column(name = "direccion", length = 255)
+    private String direccion;
 }

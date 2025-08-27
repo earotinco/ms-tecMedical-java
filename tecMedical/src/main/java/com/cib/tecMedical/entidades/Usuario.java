@@ -14,33 +14,33 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "Usuario")
+@Table(name = "usuario") 
 public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "IdUsuario")
-    private Long idUsuario;
+    @Column(name = "id_usuario") 
+    private Integer idUsuario;
 
-    @Column(name = "Nombre")
+    @Column(name = "nombre") 
     private String nombre;
 
-    @Column(name = "Apellido")
+    @Column(name = "apellido")
     private String apellido;
 
-    @Column(name = "Correo")
+    @Column(name = "correo") 
     private String correo;
 
-    @Column(name = "Usuario")
+    @Column(name = "usuario") 
     private String usuario;
 
-    @Column(name = "Password")
+    @Column(name = "password") 
     private String password;
 
     @ManyToOne
-    @JoinColumn(name = "IdRol")
+    @JoinColumn(name = "id_rol") 
     private Rol rol;
 
-    @Column(name = "Estado")
+    @Column(name = "estado") 
     private Boolean estado = true;
 }

@@ -20,24 +20,25 @@ import lombok.Data;
 @Data
 public class Venta {
 
-	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idVenta;
+	    @Id
+	    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	    @Column(name = "id_venta")
+	    private Integer idVenta;
 
-	@ManyToOne
-    @JoinColumn(name = "IdCliente", nullable = false)
-    private Cliente cliente;
+	    @ManyToOne
+	    @JoinColumn(name = "id_cliente", nullable = false) 
+	    private Cliente cliente;
 
-	@ManyToOne
-    @JoinColumn(name = "IdUsuario", nullable = false)
-    private Usuario usuario;
+	    @ManyToOne
+	    @JoinColumn(name = "id_usuario", nullable = false)
+	    private Usuario usuario;
 
-    @Column(nullable = false)
-    private LocalDateTime fecha = LocalDateTime.now();
+	    @Column(nullable = false)
+	    private LocalDateTime fecha = LocalDateTime.now();
 
-    @Column(nullable = false)
-    private double total;
+	    @Column(nullable = false)
+	    private double total;
 
-    @OneToMany(mappedBy = "venta", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<DetalleVenta> detalles;
+	    @OneToMany(mappedBy = "venta", cascade = CascadeType.ALL, orphanRemoval = true)
+	    private List<DetalleVenta> detalles;
 }
