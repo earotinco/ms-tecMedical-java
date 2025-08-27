@@ -3,7 +3,10 @@ package com.cib.tecMedical.entidades;
 import java.util.List;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
+@Data
+@Entity
 public class Categoria {
 	 @Id
 	 @GeneratedValue(strategy = GenerationType.IDENTITY)
