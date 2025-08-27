@@ -1,5 +1,9 @@
 package com.cib.tecMedical.repository;
 
-public interface DetalleVentaRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.cib.tecMedical.entidades.DetalleVenta;
+
+public interface DetalleVentaRepository extends JpaRepository<DetalleVenta, Integer> {
 
 }

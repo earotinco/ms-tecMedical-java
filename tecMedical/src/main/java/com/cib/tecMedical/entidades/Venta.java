@@ -24,12 +24,12 @@ public class Venta {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idVenta;
 
-    @ManyToOne
-    @JoinColumn(name = "idCliente", nullable = false)
+	@ManyToOne
+    @JoinColumn(name = "IdCliente", nullable = false)
     private Cliente cliente;
 
-    @ManyToOne
-    @JoinColumn(name = "idUsuario", nullable = false)
+	@ManyToOne
+    @JoinColumn(name = "IdUsuario", nullable = false)
     private Usuario usuario;
 
     @Column(nullable = false)

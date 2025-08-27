@@ -25,11 +25,11 @@ public class DetalleVenta {
 	    private Integer idDetalleVenta;
 
 	    @ManyToOne
-	    @JoinColumn(name = "idVenta", nullable = false)
+	    @JoinColumn(name = "IdVenta", nullable = false)
 	    private Venta venta;
 
 	    @ManyToOne
-	    @JoinColumn(name = "idProducto", nullable = false)
+	    @JoinColumn(name = "IdProducto", nullable = false)
 	    private Producto producto;
 
 	    @Column(nullable = false)
