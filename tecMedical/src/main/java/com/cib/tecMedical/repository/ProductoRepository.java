@@ -1,5 +1,12 @@
 package com.cib.tecMedical.repository;
 
-public interface ProductoRepository {
+import java.util.List;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.cib.tecMedical.entidades.Producto;
+
+public interface ProductoRepository extends JpaRepository<Producto,Long>{
+	List<Producto> findByEstadoTrue();
+	List<Producto> findByDescripcionContainingIgnoreCase(String descripcion);
 }

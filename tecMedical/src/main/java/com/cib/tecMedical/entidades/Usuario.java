@@ -8,7 +8,11 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "Usuario")
 public class Usuario {
@@ -18,23 +22,23 @@ public class Usuario {
     @Column(name = "IdUsuario")
     private Long idUsuario;
 
-    @Column(name = "Nombre", nullable = false, length = 50)
+    @Column(name = "Nombre")
     private String nombre;
 
-    @Column(name = "Apellido", nullable = false, length = 50)
+    @Column(name = "Apellido")
     private String apellido;
 
-    @Column(name = "Correo", nullable = false, unique = true, length = 100)
+    @Column(name = "Correo")
     private String correo;
 
-    @Column(name = "Usuario", nullable = false, unique = true, length = 50)
+    @Column(name = "Usuario")
     private String usuario;
 
-    @Column(name = "Password", nullable = false, length = 255)
+    @Column(name = "Password")
     private String password;
 
     @ManyToOne
-    @JoinColumn(name = "IdRol", nullable = false)
+    @JoinColumn(name = "IdRol")
     private Rol rol;
 
     @Column(name = "Estado")

@@ -6,4 +6,6 @@ import com.cib.tecMedical.entidades.Usuario;
 
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 
+	Usuario findByUsuario(String getusername);
+
 }
