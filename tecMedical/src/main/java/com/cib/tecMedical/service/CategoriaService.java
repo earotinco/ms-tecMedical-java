@@ -26,11 +26,11 @@ public class CategoriaService {
 		return categoriaRepository.save(categoria);
 	}
 	
-	public Categoria obtenerPorId(Long id) {
+	public Categoria obtenerPorId(Integer id) {
 		return categoriaRepository.findById(id).orElse(null);
 	}
 	
-	public void desactivar(Long id) {
+	public void desactivar(Integer id) {
 		Categoria categoria= categoriaRepository.findById(id).orElse(null);
 		if(categoria != null) {
 			categoria.setEstado(false);

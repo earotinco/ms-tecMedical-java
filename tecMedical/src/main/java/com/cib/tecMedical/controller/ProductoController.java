@@ -35,12 +35,12 @@ public class ProductoController {
     }
 	
 	@GetMapping("/{id}")
-    public Producto obtenerProducto(@PathVariable Long id) {
+    public Producto obtenerProducto(@PathVariable Integer id) {
         return productoService.obtenerPorId(id);
     }
 	
 	@DeleteMapping("/{id}")
-    public void desactivarProducto(@PathVariable Long id) {
+    public void desactivarProducto(@PathVariable Integer id) {
         productoService.desactivar(id);
     }
 }

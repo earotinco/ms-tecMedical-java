@@ -33,7 +33,7 @@ public class ClienteController {
 
     // Buscar cliente por ID
     @GetMapping("/{id}")
-    public ResponseEntity<Cliente> obtenerPorId(@PathVariable Long id) {
+    public ResponseEntity<Cliente> obtenerPorId(@PathVariable Integer id) {
         return clienteService.buscarPorId(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
@@ -48,7 +48,7 @@ public class ClienteController {
 
     // Actualizar cliente existente
     @PutMapping("/{id}")
-    public ResponseEntity<Cliente> actualizar(@PathVariable Long id, @RequestBody Cliente cliente) {
+    public ResponseEntity<Cliente> actualizar(@PathVariable Integer id, @RequestBody Cliente cliente) {
         try {
             Cliente actualizado = clienteService.actualizar(id, cliente);
             return ResponseEntity.ok(actualizado);
@@ -59,7 +59,7 @@ public class ClienteController {
 
     // Eliminar cliente
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> eliminar(@PathVariable Long id) {
+    public ResponseEntity<Void> eliminar(@PathVariable Integer id) {
         try {
             clienteService.eliminar(id);
             return ResponseEntity.noContent().build();

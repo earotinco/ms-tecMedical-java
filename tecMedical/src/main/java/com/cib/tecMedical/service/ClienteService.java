@@ -22,7 +22,7 @@ public class ClienteService {
 	}
 
     // Buscar cliente por ID
-    public Optional<Cliente> buscarPorId(Long id) {
+    public Optional<Cliente> buscarPorId(Integer id) {
         return clienteRepo.findById(id);
     }
 
@@ -32,7 +32,7 @@ public class ClienteService {
     }
 
     // Actualizar cliente existente
-    public Cliente actualizar(Long id, Cliente nuevo) {
+    public Cliente actualizar(Integer id, Cliente nuevo) {
         Cliente existente = clienteRepo.findById(id)
             .orElseThrow(() -> new RuntimeException("Cliente no encontrado con ID: " + id));
 
@@ -47,7 +47,7 @@ public class ClienteService {
     }
 
     // Eliminar cliente por ID
-    public void eliminar(Long id) {
+    public void eliminar(Integer id) {
         if (!clienteRepo.existsById(id)) {
             throw new RuntimeException("No se puede eliminar. Cliente no encontrado con ID: " + id);
         }

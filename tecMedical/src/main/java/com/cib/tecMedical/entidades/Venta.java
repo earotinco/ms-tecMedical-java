@@ -1,6 +1,7 @@
 package com.cib.tecMedical.entidades;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -44,6 +45,6 @@ public class Venta {
 
 	    @OneToMany(mappedBy = "venta", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
 	    @JsonIgnore
-	    private List<DetalleVenta> detalles;
+	    private List<DetalleVenta> detalles = new ArrayList<>();
 
 }

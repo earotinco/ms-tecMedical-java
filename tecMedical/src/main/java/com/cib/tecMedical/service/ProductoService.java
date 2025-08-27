@@ -25,11 +25,11 @@ public class ProductoService {
 		return productoRepository.save(producto);
 	}
 	
-	public Producto obtenerPorId(Long id) {
+	public Producto obtenerPorId(Integer id) {
 		return productoRepository.findById(id).orElse(null);
 	}
 	
-	public void desactivar(Long id) {
+	public void desactivar(Integer id) {
 		Producto producto = productoRepository.findById(id).orElse(null);
 		if(producto != null) {
 			producto.setEstado(false);
