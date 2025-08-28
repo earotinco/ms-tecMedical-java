@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cib.tecMedical.entidades.Categoria;
-import com.cib.tecMedical.entidades.Producto;
 import com.cib.tecMedical.repository.CategoriaRepository;
 
 @Service

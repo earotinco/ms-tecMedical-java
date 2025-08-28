@@ -17,7 +17,6 @@ public class ClienteService {
 
     // Listar todos los clientes
     public List<Cliente> listarTodos() {
-		// TODO Auto-generated method stub
 		return clienteRepo.findAll();
 	}
 

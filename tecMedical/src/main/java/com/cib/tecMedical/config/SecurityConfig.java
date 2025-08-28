@@ -1,8 +1,5 @@
 package com.cib.tecMedical.config;
 
-
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -28,10 +25,10 @@ public class SecurityConfig {
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 	    http
-	        .csrf(csrf -> csrf.disable()) // ✅ forma moderna
+	        .csrf(csrf -> csrf.disable()) // forma moderna
 	        .authorizeHttpRequests(auth -> auth
 	            .requestMatchers("/api/auth/**").permitAll()
-	            .requestMatchers("/api/clientes/**").hasAnyRole("ADMIN", "USER")
+	            .requestMatchers("/api/clientes/**").hasAnyRole("Administrador", "Vendedor")
 	            .anyRequest().authenticated()
 	        )
 	        .httpBasic(Customizer.withDefaults());
@@ -40,11 +37,9 @@ public class SecurityConfig {
     }
 	
 	
-
-
-
     @Bean
     public PasswordEncoder passwordEncoder() {
+    	System.out.println(" Bean PasswordEncoder registrado");
         return new BCryptPasswordEncoder();
     }
     
