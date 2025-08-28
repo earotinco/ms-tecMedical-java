@@ -13,6 +13,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
+
 import com.cib.tecMedical.service.CustomUserDetailsService;
 
 @Configuration
@@ -27,6 +31,7 @@ public class SecurityConfig {
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 	    http
+	        .cors(Customizer.withDefaults())
 	        .csrf(csrf -> csrf.disable()) // forma moderna
 	        .authorizeHttpRequests(auth -> auth
 	            .requestMatchers("/api/auth/**", "/api/productos/**",  "/api/categorias/**",
@@ -57,4 +62,21 @@ public class SecurityConfig {
 
 	    return authBuilder.build();
 	}
+    
+    
+   
+
+    @Bean
+    public CorsFilter corsFilter() {
+        CorsConfiguration config = new CorsConfiguration();
+        config.addAllowedOrigin("http://localhost:4200"); 
+        config.addAllowedHeader("*");
+        config.addAllowedMethod("*");
+        config.setAllowCredentials(true);
+
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", config);
+
+        return new CorsFilter(source);
+    }
 }

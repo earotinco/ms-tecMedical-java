@@ -1,0 +1,23 @@
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+
+  button {
+    width: 100%;
+    padding: 12px;
+  }
+}
+
+:root {
+  --azul: #1667be;
+  --blanco: #ffe072;
+  --celeste: #abd3ff;
+  --blanco: #FFFFFF;
+  --negro: #000000;
+  --gris-claro: #F8F9FA;
+  --gris-oscuro: #343A40;
+  --rojo: #DC3545;
+  --verde: #28A745;
+  --naranja:rgb(243, 168, 38)5;
+}
