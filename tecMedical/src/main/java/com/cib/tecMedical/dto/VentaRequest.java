@@ -1,6 +1,5 @@
 package com.cib.tecMedical.dto;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 import lombok.Getter;
@@ -11,7 +10,7 @@ import lombok.Setter;
 public class VentaRequest {
 	
 	 private Integer clienteId;
-	    private LocalDateTime fecha;
+	 private Integer usuarioId;
 	    private List<DetalleVentaRequest> detalles;
 
 

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cib.tecMedical.dto.VentaRequest;
+import com.cib.tecMedical.dto.VentaResponse;
 import com.cib.tecMedical.entidades.Venta;
 import com.cib.tecMedical.service.VentaService;
 
@@ -24,6 +25,8 @@ public class VentaController {
         this.ventaService = ventaService;
     }
 
+    
+    
     @PostMapping
     public ResponseEntity<?> registrarVenta(@RequestBody VentaRequest request) {
         try {
@@ -42,7 +45,7 @@ public class VentaController {
     }
 
     @GetMapping("/{id}")
-    public Venta buscarPorId(@PathVariable Integer id) {
+    public VentaResponse buscarPorId(@PathVariable Integer id) {
         return ventaService.buscarPorId(id);
     }
 }

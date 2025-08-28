@@ -34,7 +34,7 @@ public class Venta {
 	    private Cliente cliente;
 
 	    @ManyToOne
-	    @JoinColumn(name = "id_usuario", nullable = false)
+	    @JoinColumn(name = "id_usuario", nullable = true)
 	    private Usuario usuario;
 
 	    @Column(nullable = false)
