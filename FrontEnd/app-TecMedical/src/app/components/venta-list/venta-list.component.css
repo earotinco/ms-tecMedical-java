@@ -1,23 +1,82 @@
+:root {
+  --azul: #1667be;
+  --celeste: #abd3ff;
+  --blanco: #ffffff;
+  --negro: #000000;
+  --gris-claro: #f8f9fa;
+  --gris-oscuro: #343a40;
+  --rojo: #dc3545;
+  --verde: #28a745;
+  --naranja: rgb(243, 168, 38);
+}
+
+body {
+  background-color: var(--gris-claro);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  background-color: var(--blanco);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  color: var(--azul);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.alert {
+  margin-bottom: 20px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.table th {
+  background-color: var(--azul);
+  color: var(--blanco);
+  padding: 10px;
+  text-align: left;
+}
+
+.table td {
+  padding: 10px;
+  border: 1px solid var(--gris-claro);
+}
+
+.table-sm th {
+  background-color: var(--celeste);
+  color: var(--negro);
+}
+
+.table-sm td {
+  background-color: var(--blanco);
+}
+
 @media (max-width: 768px) {
   .container {
     padding: 10px;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  .table th, .table td {
+    font-size: 0.9rem;
+    padding: 8px;
   }
 
   button {
     width: 100%;
     padding: 12px;
   }
-}
-
-:root {
-  --azul: #1667be;
-  --blanco: #ffe072;
-  --celeste: #abd3ff;
-  --blanco: #FFFFFF;
-  --negro: #000000;
-  --gris-claro: #F8F9FA;
-  --gris-oscuro: #343A40;
-  --rojo: #DC3545;
-  --verde: #28A745;
-  --naranja:rgb(243, 168, 38)5;
 }

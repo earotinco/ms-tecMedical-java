@@ -31,7 +31,7 @@ export interface VentaResponse {
   idVenta: number;
   cliente: string;
   vendedor: string;
-  fecha: string; // Angular maneja string de LocalDateTime
+  fecha: number[];
   total: number;
   detalles: DetalleVentaResponse[];
 }
@@ -45,7 +45,7 @@ export class VentaService {
 
 
    private apiUrl = 'http://localhost:8080/api/ventas';
-  private username = 'gloria_vend'; 
+  private username = 'gloria_vend';
   private password = '123456';
 
   constructor(private http: HttpClient) { }
@@ -71,4 +71,11 @@ export class VentaService {
    registrarVenta(venta: VentaRequest): Observable<VentaResponse> {
     return this.http.post<VentaResponse>(this.apiUrl, venta);
   }
+
+
+}
+
+
+export interface VentaConFechaDate extends VentaResponse {
+  fechaDate: Date;
 }
