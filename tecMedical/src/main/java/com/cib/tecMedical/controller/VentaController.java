@@ -2,7 +2,9 @@ package com.cib.tecMedical.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,11 +21,10 @@ import com.cib.tecMedical.service.VentaService;
 @RequestMapping("/api/ventas")
 public class VentaController {
 
-	private final VentaService ventaService;
+	@Autowired
+	private  VentaService ventaService;
 
-    public VentaController(VentaService ventaService) {
-        this.ventaService = ventaService;
-    }
+    
 
     
     
@@ -40,11 +41,14 @@ public class VentaController {
 
 
     @GetMapping
-    public List<Venta> listarVentas() {
+    @PreAuthorize("hasAnyRole('Administrador','Vendedor')")
+    public List<VentaResponse> listarVentas() {
         return ventaService.listarVentas();
     }
 
+
     @GetMapping("/{id}")
+    @PreAuthorize("hasAnyRole('Administrador','Vendedor')")
     public VentaResponse buscarPorId(@PathVariable Integer id) {
         return ventaService.buscarPorId(id);
     }

@@ -81,10 +81,43 @@ public class VentaServiceImpl implements VentaService {
 		return ventaRepository.save(venta);
 	}
 
+	
+	
 	@Override
-	public List<Venta> listarVentas() {
-		return ventaRepository.findAll();
+	public List<VentaResponse> listarVentas() {
+		 return ventaRepository.findAll()
+		            .stream()
+		            .map(this::mapToResponse)
+		            .toList();
 	}
+
+	public VentaResponse mapToResponse(Venta venta) {
+	    VentaResponse dto = new VentaResponse();
+	    dto.setIdVenta(venta.getIdVenta());
+	    dto.setCliente(venta.getCliente().getNombre() + " " + venta.getCliente().getApellido());
+	    dto.setVendedor(
+	        venta.getUsuario() != null 
+	        ? venta.getUsuario().getNombre() + " " + venta.getUsuario().getApellido() 
+	        : "Venta Web"
+	    );
+	    dto.setFecha(venta.getFecha());
+	    dto.setTotal(venta.getTotal());
+
+	    List<DetalleVentaResponse> detalles = venta.getDetalles()
+	        .stream()
+	        .map(det -> new DetalleVentaResponse(
+	            det.getIdDetalleVenta(),
+	            det.getProducto().getNombre(),
+	            det.getCantidad(),
+	            det.getPrecioUnitario(),
+	            det.getSubtotal()
+	        ))
+	        .toList();
+
+	    dto.setDetalles(detalles);
+	    return dto;
+	}
+
 
 	@Override
 	public VentaResponse buscarPorId(Integer id) {
@@ -118,5 +151,7 @@ public class VentaServiceImpl implements VentaService {
 	public List<Venta> listarVentasWeb() {
 	    return ventaRepository.listarVentasWeb();
 	}
+
+	
 
 }

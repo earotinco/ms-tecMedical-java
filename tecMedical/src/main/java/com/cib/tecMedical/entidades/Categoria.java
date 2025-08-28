@@ -1,5 +1,6 @@
 package com.cib.tecMedical.entidades;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -28,6 +29,6 @@ public class Categoria {
 
     @OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     @JsonManagedReference
-    private List<Producto> productos;
+    private List<Producto> productos = new ArrayList<>();
     
 }

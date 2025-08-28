@@ -9,7 +9,7 @@ import com.cib.tecMedical.entidades.Venta;
 public interface VentaService {
 	
 	    Venta registrarVentaConDetalles(VentaRequest request);
-	    List<Venta> listarVentas();
+	    List<VentaResponse> listarVentas();
 	    VentaResponse buscarPorId(Integer id);
 	    List<Venta> listarVentasWeb() ;
 

@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -16,6 +17,7 @@ import com.cib.tecMedical.service.CustomUserDetailsService;
 
 @Configuration
 @EnableWebMvc
+@EnableMethodSecurity(prePostEnabled = true) //ale
 public class SecurityConfig {
 	
 	@Autowired
@@ -27,7 +29,8 @@ public class SecurityConfig {
 	    http
 	        .csrf(csrf -> csrf.disable()) // forma moderna
 	        .authorizeHttpRequests(auth -> auth
-	            .requestMatchers("/api/auth/**").permitAll()
+	            .requestMatchers("/api/auth/**", "/api/productos/**",  "/api/categorias/**",
+	            		 "/api/ventas/**").permitAll()
 	            .requestMatchers("/api/clientes/**").hasAnyRole("Administrador", "Vendedor")
 	            .anyRequest().authenticated()
 	        )

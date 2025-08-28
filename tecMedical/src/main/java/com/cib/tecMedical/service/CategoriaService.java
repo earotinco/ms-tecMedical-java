@@ -22,15 +22,20 @@ public class CategoriaService {
 	}
 	
 	public Categoria guardar(Categoria categoria) {
+		 if(categoria.getNombre() == null || categoria.getNombre().isBlank()) {
+		        throw new IllegalArgumentException("El nombre de la categoría no puede estar vacío");
+		    }
 		return categoriaRepository.save(categoria);
 	}
 	
 	public Categoria obtenerPorId(Integer id) {
-		return categoriaRepository.findById(id).orElse(null);
+		return categoriaRepository.findById(id).
+				orElseThrow(() -> new RuntimeException("Categoría no encontrada"));
 	}
 	
 	public void desactivar(Integer id) {
-		Categoria categoria= categoriaRepository.findById(id).orElse(null);
+		Categoria categoria= categoriaRepository.findById(id) 
+				.orElseThrow(() -> new RuntimeException("Categoría no encontrada"));
 		if(categoria != null) {
 			categoria.setEstado(false);
 			categoriaRepository.save(categoria);
