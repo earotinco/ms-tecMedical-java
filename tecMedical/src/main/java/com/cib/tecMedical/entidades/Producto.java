@@ -1,5 +1,7 @@
 package com.cib.tecMedical.entidades;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -29,6 +31,7 @@ public class Producto {
     private Boolean estado = true;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_categoria", nullable = false) 
+    @JoinColumn(name = "id_categoria", nullable = false)
+    @JsonBackReference
     private Categoria categoria;
 }

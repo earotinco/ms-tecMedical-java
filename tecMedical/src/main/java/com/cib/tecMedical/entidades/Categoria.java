@@ -2,6 +2,8 @@ package com.cib.tecMedical.entidades;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -25,6 +27,7 @@ public class Categoria {
     private Boolean estado = true;
 
     @OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @JsonManagedReference
     private List<Producto> productos;
     
 }

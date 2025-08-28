@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cib.tecMedical.entidades.Producto;
@@ -21,13 +20,16 @@ public class ProductoController {
 	@Autowired
 	private ProductoService productoService;
 	
-	@GetMapping
-	public List<Producto> listarProductos(@RequestParam(required = false) Boolean todos){
-		if(Boolean.TRUE.equals(todos)) {
-		return productoService.listarTodos();
-		}
-		return productoService.listarActivos();
-	}
+	 @GetMapping
+	    public List<Producto> listarActivos() {
+	        return productoService.listarActivos();
+	    }
+	 
+	 
+	 @GetMapping("/todos")
+	    public List<Producto> listarTodos() {
+	        return productoService.listarTodos();
+	    }
 	
 	@PostMapping
     public Producto crearProducto(@RequestBody Producto producto) {
