@@ -1,15 +1,23 @@
 import { Routes } from '@angular/router';
 
-//import { provideRouter } from '@angular/router';
-import { VentaListComponent } from './components/venta-list/venta-list.component';
 
 export const routes: Routes = [
 
   { path: '', redirectTo: 'ventas', pathMatch: 'full' },
-  { path: 'ventas', component: VentaListComponent
-   },
+
+{
+  path: 'ventas',
+  loadComponent: () =>
+    import('./components/venta-list/venta-list.component').then(m => m.VentaListComponent)
+},
+
+{
+    path: 'ventas/:id',
+    loadComponent: () =>
+      import('./components/venta-detail/venta-detail.component').then(m => m.VentaDetailComponent)
+  }
+
 
 ];
 
 
-//export const appRouterProviders = provideRouter(routes);

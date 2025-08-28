@@ -1,1 +1,47 @@
-<p>venta-detail works!</p>
+<div class="container mt-4" *ngIf="venta">
+  <h2 class="mb-3">Detalle de Venta #{{ venta.idVenta }}</h2>
+
+  <div class="card mb-4">
+    <div class="card-body">
+      <p><strong>Cliente:</strong> {{ venta.cliente }}</p>
+      <p><strong>Vendedor:</strong> {{ venta.vendedor }}</p>
+      <p><strong>Fecha:</strong> {{ venta.fechaDate | date:'fullDate' }}</p>
+      <p><strong>Total:</strong> {{ venta.total | currency:'PEN' }}</p>
+    </div>
+  </div>
+
+  <h4>Productos Vendidos</h4>
+  <table class="table table-bordered table-hover">
+    <thead class="table-light">
+      <tr>
+        <th>Producto</th>
+        <th>Cantidad</th>
+        <th>Precio Unitario</th>
+        <th>Subtotal</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let det of venta.detalles">
+        <td>{{ det.producto }}</td>
+        <td>{{ det.cantidad }}</td>
+        <td>{{ det.precioUnitario | currency:'PEN' }}</td>
+        <td>{{ calcularSubtotal(det) | currency:'PEN' }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="mt-4">
+    <!-- Botón para futuras funcionalidades -->
+    <button class="btn btn-outline-primary" disabled>
+      Verificar Pedido (Próximamente)
+    </button>
+  </div>
+
+  <div class="mt-4">
+  <button class="btn btn-secondary" (click)="volverAlListado()">
+    ← Regresar al listado
+  </button>
+  </div>
+</div>
+
+<div *ngIf="error" class="alert alert-danger mt-3">{{ error }}</div>

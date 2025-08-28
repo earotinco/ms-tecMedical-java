@@ -18,32 +18,22 @@
         <td>{{ venta.idVenta }}</td>
         <td>{{ venta.cliente }}</td>
         <td>{{ venta.vendedor }}</td>
-        <td>{{ venta.fechaDate | date:'short' }}</td>
-        <td>{{ venta.total | currency:'PEN' }}</td>
-      </tr>
-      <tr *ngFor="let venta of ventas">
-        <td colspan="5">
-          <strong>Detalles:</strong>
-          <table class="table table-sm table-striped">
-            <thead>
-              <tr>
-                <th>Producto</th>
-                <th>Cantidad</th>
-                <th>Precio Unitario</th>
-                <th>Subtotal</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let det of venta.detalles">
-                <td>{{ det.producto }}</td>
-                <td>{{ det.cantidad }}</td>
-                <td>{{ det.precioUnitario | currency:'PEN' }}</td>
-                <td>{{ calcularSubtotal(det) | currency:'PEN' }}</td>
-              </tr>
-            </tbody>
-          </table>
+        <td>{{ venta.fechaDate | date : "short" }}</td>
+        <td>{{ venta.total | currency : "PEN" }}</td>
+
+        <td>
+          <button
+            class="btn btn-primary btn-sm"
+            (click)="verDetalle(venta.idVenta)"
+          >
+            Ver detalle
+          </button>
         </td>
       </tr>
     </tbody>
   </table>
+
+  <div class="mt-4">
+  
+</div>
 </div>

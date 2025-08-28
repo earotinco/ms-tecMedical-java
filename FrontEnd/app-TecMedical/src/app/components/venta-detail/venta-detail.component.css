@@ -1,0 +1,33 @@
+.container {
+  max-width: 800px;
+  margin: auto;
+}
+
+h2 {
+  color: #2c3e50;
+  font-weight: bold;
+}
+
+.card {
+  border: 1px solid #dee2e6;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.card-body p {
+  margin-bottom: 0.5rem;
+  font-size: 16px;
+}
+
+.table th, .table td {
+  vertical-align: middle;
+  text-align: center;
+}
+
+.table thead {
+  background-color: #f8f9fa;
+}
+
+.btn-outline-primary {
+  cursor: not-allowed;
+  opacity: 0.6;
+}

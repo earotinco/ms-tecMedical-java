@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Router } from '@angular/router';
 
 import { CommonModule } from '@angular/common';
 import { VentaService, VentaConFechaDate, DetalleVentaResponse } from '../../services/venta.service';
@@ -18,7 +19,7 @@ export class VentaListComponent  implements OnInit  {
    ventas: VentaConFechaDate[] = [];
   error: string = '';
 
-  constructor(private ventaService: VentaService) { }
+  constructor(private ventaService: VentaService, private router: Router) { }
 
   ngOnInit(): void {
     this.cargarVentas();
@@ -51,4 +52,8 @@ export class VentaListComponent  implements OnInit  {
   calcularSubtotal(det: DetalleVentaResponse): number {
     return det.cantidad * det.precioUnitario;
   }
+
+  verDetalle(idVenta: number): void {
+  this.router.navigate(['/ventas', idVenta]);
+}
 }
