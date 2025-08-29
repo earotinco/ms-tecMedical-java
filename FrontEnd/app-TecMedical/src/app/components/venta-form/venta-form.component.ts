@@ -150,11 +150,19 @@ export class VentaFormComponent implements OnInit {
       }));
 
     const usuarioId = this.ventaForm.value.usuarioId;
-    const venta: VentaRequest = {
+    /*const venta: VentaRequest = {
       clienteId: this.ventaForm.value.clienteId,
       detalles: detalles,
       ...(usuarioId && { usuarioId }),
-    };
+    };*/
+
+
+const venta: VentaRequest = {
+  clienteId: this.ventaForm.value.clienteId,
+  usuarioId: usuarioId,
+  detalles: detalles
+};
+
 
     console.log('Venta enviada:', venta);
     console.log('Detalles crudos:', this.detalles.getRawValue());
