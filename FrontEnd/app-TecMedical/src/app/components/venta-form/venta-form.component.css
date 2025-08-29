@@ -111,3 +111,24 @@ mat-form-field.readonly-field.mat-form-field .mat-form-field-label {
   color: var(--azul) !important;
   font-weight: 500;
 }
+
+.mt-4 {
+  margin-top: 1.5rem;
+}
+
+.mt-4 + .mt-4 {
+  margin-top: 0.75rem;
+}
+
+.venta-btn {
+  background-color: var(--naranja);
+  border: none;
+  color: var(--blanco);
+  padding: 6px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+

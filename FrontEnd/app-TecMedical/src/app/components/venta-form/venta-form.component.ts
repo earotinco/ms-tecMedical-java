@@ -13,6 +13,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
+
+import { Router } from '@angular/router';
 import { ProductoService, Producto } from '../../services/producto.service';
 import { VentaService, VentaRequest } from '../../services/venta.service';
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -46,7 +48,8 @@ export class VentaFormComponent implements OnInit {
     private fb: FormBuilder,
     private productoService: ProductoService,
     private ventaService: VentaService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private router: Router
   ) {
     this.ventaForm = this.fb.group({
       clienteId: ['', Validators.required],
@@ -82,6 +85,10 @@ export class VentaFormComponent implements OnInit {
 
     this.detalles.push(detalleForm);
   }
+
+  volverAlListado(): void {
+  this.router.navigate(['/ventas']);
+}
 
   eliminarDetalle(index: number): void {
     this.detalles.removeAt(index);
@@ -160,6 +167,7 @@ export class VentaFormComponent implements OnInit {
         this.ventaForm.reset();
         this.detalles.clear();
         this.totalGeneral = 0;
+        this.router.navigate(['/ventas']);
       },
       error: () => {
         this.snackBar.open('Error al registrar venta', 'Cerrar', {
@@ -167,5 +175,9 @@ export class VentaFormComponent implements OnInit {
         });
       },
     });
+
+
   }
+
+
 }

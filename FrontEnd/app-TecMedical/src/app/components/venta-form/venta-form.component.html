@@ -58,20 +58,43 @@
         </mat-error>
       </mat-form-field>
 
-     <!-- Precio Unitario -->
-<mat-form-field appearance="fill" class="full-width readonly-field" floatLabel="always">
-  <mat-label>Precio Unitario</mat-label>
-  <input matInput type="number" formControlName="precioUnitario" [disabled]="true" />
-</mat-form-field>
+      <!-- Precio Unitario -->
+      <mat-form-field
+        appearance="fill"
+        class="full-width readonly-field"
+        floatLabel="always"
+      >
+        <mat-label>Precio Unitario</mat-label>
+        <input
+          matInput
+          type="number"
+          formControlName="precioUnitario"
+          [disabled]="true"
+        />
+      </mat-form-field>
 
-<!-- Subtotal -->
-<mat-form-field appearance="fill" class="full-width readonly-field" floatLabel="always">
-  <mat-label>Subtotal</mat-label>
-  <input matInput type="number" formControlName="subtotal" [disabled]="true" />
-</mat-form-field>
+      <!-- Subtotal -->
+      <mat-form-field
+        appearance="fill"
+        class="full-width readonly-field"
+        floatLabel="always"
+      >
+        <mat-label>Subtotal</mat-label>
+        <input
+          matInput
+          type="number"
+          formControlName="subtotal"
+          [disabled]="true"
+        />
+      </mat-form-field>
 
       <!-- Botón eliminar -->
-      <button mat-raised-button color="warn" (click)="eliminarDetalle(i)">
+      <button
+        mat-raised-button
+        color="warn"
+        type="button"
+        (click)="eliminarDetalle(i)"
+      >
         Eliminar
       </button>
     </mat-expansion-panel>
@@ -96,4 +119,10 @@
   <button mat-raised-button color="accent" type="submit">
     Registrar Venta
   </button>
+
+  <div class="mt-4">
+    <button class="venta-btn" (click)="volverAlListado()">
+      ← Regresar al listado
+    </button>
+  </div>
 </form>
