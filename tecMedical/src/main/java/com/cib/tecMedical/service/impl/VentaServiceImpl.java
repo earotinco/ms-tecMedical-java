@@ -69,14 +69,20 @@ public class VentaServiceImpl implements VentaService {
 				detalle.setPrecioUnitario(d.getPrecioUnitario());
 				detalle.setVenta(venta);
 				detalles.add(detalle);
+				detalle.setSubtotal(d.getCantidad() * d.getPrecioUnitario());
 			}
 		}
 		venta.setDetalles(detalles);
 
-		double total = venta.getDetalles().stream().
-				mapToDouble(det -> det.getCantidad() * det.getPrecioUnitario())
-				.sum();
-		venta.setTotal(total);
+	
+		
+		double total = detalles.stream()
+			    .mapToDouble(det -> det.getCantidad() * det.getPrecioUnitario())
+			    .sum();
+			venta.setTotal(total);
+			venta.setDetalles(detalles);
+			
+		
 
 		return ventaRepository.save(venta);
 	}
@@ -127,7 +133,11 @@ public class VentaServiceImpl implements VentaService {
 	    VentaResponse dto = new VentaResponse();
 	    dto.setIdVenta(venta.getIdVenta());
 	    dto.setCliente(venta.getCliente().getNombre() + " " + venta.getCliente().getApellido());
-	    dto.setVendedor(venta.getUsuario().getNombre() + " " + venta.getUsuario().getApellido());
+	    dto.setVendedor(
+	    	    venta.getUsuario() != null
+	    	        ? venta.getUsuario().getNombre() + " " + venta.getUsuario().getApellido()
+	    	        : "No asignado"
+	    	);
 	    dto.setFecha(venta.getFecha());
 	    dto.setTotal(venta.getTotal());
 

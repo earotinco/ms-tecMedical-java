@@ -31,7 +31,7 @@ public class SecurityConfig {
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 	    http
-	        .cors(Customizer.withDefaults())
+	        .cors(Customizer.withDefaults()) //ale
 	        .csrf(csrf -> csrf.disable()) // forma moderna
 	        .authorizeHttpRequests(auth -> auth
 	            .requestMatchers("/api/auth/**", "/api/productos/**",  "/api/categorias/**",
@@ -67,7 +67,7 @@ public class SecurityConfig {
    
 
     @Bean
-    public CorsFilter corsFilter() {
+    public CorsFilter corsFilter() { //ale
         CorsConfiguration config = new CorsConfiguration();
         config.addAllowedOrigin("http://localhost:4200"); 
         config.addAllowedHeader("*");

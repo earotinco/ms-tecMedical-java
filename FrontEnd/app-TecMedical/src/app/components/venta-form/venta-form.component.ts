@@ -91,12 +91,18 @@ export class VentaFormComponent implements OnInit {
     const producto = detalle.get('producto')?.value;
     const cantidad = detalle.get('cantidad')?.value;
 
+    console.log('Producto seleccionado:', producto);
+
     if (producto) {
       const subtotal = producto.precio * cantidad;
       detalle.patchValue({
         precioUnitario: producto.precio,
         subtotal: subtotal,
       });
+
+      detalle.get('precioUnitario')?.updateValueAndValidity();
+      detalle.get('subtotal')?.updateValueAndValidity();
+
       this.calcularTotalGeneral();
     }
   }
@@ -125,16 +131,14 @@ export class VentaFormComponent implements OnInit {
       return;
     }
 
-
-
-const detalles = this.detalles.getRawValue()
-  .filter((d: any) => d.producto && d.producto.id)
-  .map((d: any) => ({
-    productoId: d.producto.id,
-    cantidad: d.cantidad,
-    precioUnitario: d.precioUnitario,
-  }));
-
+    const detalles = this.detalles
+      .getRawValue()
+      .filter((d: any) => d.producto && d.producto.idProducto)
+      .map((d: any) => ({
+        productoId: d.producto.idProducto,
+        cantidad: d.cantidad,
+        precioUnitario: d.precioUnitario,
+      }));
 
     const usuarioId = this.ventaForm.value.usuarioId;
     const venta: VentaRequest = {
@@ -144,6 +148,7 @@ const detalles = this.detalles.getRawValue()
     };
 
     console.log('Venta enviada:', venta);
+    console.log('Detalles crudos:', this.detalles.getRawValue());
 
     this.ventaService.registrarVenta(venta).subscribe({
       next: () => {
