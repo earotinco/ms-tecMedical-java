@@ -1,33 +1,126 @@
+:host {
+  font-family: 'Montserrat', sans-serif;
+  display: block;
+  padding: 20px;
+  background-color: var(--gris-claro);
+  color: var(--gris-oscuro);
+}
+
 .container {
-  max-width: 800px;
+  max-width: 850px;
   margin: auto;
+  background-color: var(--blanco);
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 h2 {
-  color: #2c3e50;
-  font-weight: bold;
+  color: var(--azul);
+  font-weight: 600;
+  font-size: 1.6rem;
+  margin-bottom: 20px;
+  border-bottom: 2px solid var(--gris-claro);
+  padding-bottom: 8px;
 }
 
 .card {
-  border: 1px solid #dee2e6;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  border: 1px solid var(--gris-claro);
+  background-color: var(--celeste);
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+}
+
+.card-body {
+  padding: 20px;
 }
 
 .card-body p {
-  margin-bottom: 0.5rem;
-  font-size: 16px;
+  margin-bottom: 0.75rem;
+  font-size: 1rem;
+  color: var(--gris-oscuro);
+  padding-left: 10px;
 }
 
-.table th, .table td {
-  vertical-align: middle;
+h4 {
+  margin-top: 30px;
+  margin-bottom: 15px;
+  font-size: 1.3rem;
+  color: var(--azul);
+  border-bottom: 1px solid var(--gris-claro);
+  padding-bottom: 6px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.table th {
+  background-color: var(--azul);
+  color: var(--blanco);
+  padding: 12px;
   text-align: center;
+  font-weight: 600;
 }
 
-.table thead {
-  background-color: #f8f9fa;
+.table td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid var(--gris-claro);
+}
+
+.table tr:hover {
+  background-color: var(--celeste);
+  transition: background-color 0.2s ease-in-out;
+}
+
+.mt-4 {
+  margin-top: 1.5rem;
+}
+
+.mt-4 + .mt-4 {
+  margin-top: 0.75rem;
 }
 
 .btn-outline-primary {
+  background-color: var(--gris-claro);
+  color: var(--gris-oscuro);
+  border: 1px dashed var(--azul);
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 500;
   cursor: not-allowed;
   opacity: 0.6;
+  margin-right: 10px;
+}
+
+.btn-secondary {
+  background-color: var(--naranja);
+  color: var(--blanco);
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background-color: var(--azul);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.alert-danger {
+  background-color: var(--rojo);
+  color: var(--blanco);
+  padding: 12px 16px;
+  border-radius: 6px;
+  font-weight: 500;
+  margin-top: 20px;
 }

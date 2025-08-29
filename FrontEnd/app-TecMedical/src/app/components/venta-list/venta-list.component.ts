@@ -56,4 +56,10 @@ export class VentaListComponent  implements OnInit  {
   verDetalle(idVenta: number): void {
   this.router.navigate(['/ventas', idVenta]);
 }
+
+registrarVenta(): void {
+  this.router.navigate(['/ventas/nuevo']);
 }
+
+}
+

@@ -1,67 +1,86 @@
-:host {
-  font-family: 'Montserrat', sans-serif;
-  display: block;
-  padding: 20px;
-  background-color: var(--gris-claro);
-  color: var(--gris-oscuro);
-}
 
-.container {
-  max-width: 900px;
+.venta-list-container {
+  max-width: 950px;
   margin: auto;
   background-color: var(--blanco);
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 h2 {
   color: var(--azul);
   margin-bottom: 20px;
   font-weight: 600;
+  font-size: 1.6rem;
+  border-bottom: 2px solid var(--gris-claro);
+  padding-bottom: 8px;
+}
+
+.mt-4 {
+  margin-top: 1.5rem;
+}
+
+.mt-4 + .mt-4 {
+  margin-top: 0.75rem;
 }
 
 .alert {
   background-color: var(--rojo);
   color: var(--blanco);
-  padding: 10px;
-  border-radius: 4px;
+  padding: 12px 16px;
+  border-radius: 6px;
   margin-bottom: 15px;
+  font-weight: 500;
 }
 
-.table {
+.venta-table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 10px;
+  margin-top: 15px;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
-.table th {
+.venta-table th {
   background-color: var(--azul);
   color: var(--blanco);
-  padding: 10px;
+  padding: 12px;
   text-align: left;
+  font-weight: 600;
 }
 
-.table td {
-  padding: 10px;
+.venta-table td {
+  padding: 12px;
   border-bottom: 1px solid var(--gris-claro);
 }
 
-.table tr:hover {
+.venta-table tr:hover {
   background-color: var(--celeste);
+  transition: background-color 0.2s ease-in-out;
 }
 
-.btn-primary {
+.venta-btn {
   background-color: var(--naranja);
   border: none;
   color: var(--blanco);
-  padding: 6px 12px;
-  border-radius: 4px;
+  padding: 6px 14px;
+  border-radius: 6px;
   cursor: pointer;
   font-weight: 500;
-  transition: background-color 0.3s ease;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
 }
 
-.btn-primary:hover {
+.venta-btn:hover {
   background-color: var(--azul);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.no-data {
+  margin-top: 20px;
+  text-align: center;
+  color: var(--gris-oscuro);
+  font-style: italic;
 }

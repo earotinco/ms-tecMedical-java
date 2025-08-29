@@ -1,9 +1,15 @@
-<div class="container">
+<div class="venta-list-container">
   <h2>Listado de Ventas</h2>
 
-  <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+  <div class="mt-4">
+  <button class="btn btn-secondary" (click)="registrarVenta()">
+    ← Registrar Venta
+  </button>
+  </div>
 
-  <table class="table table-bordered" *ngIf="ventas.length > 0">
+  <div *ngIf="error" class="alert">{{ error }}</div>
+
+  <table class="venta-table" *ngIf="ventas.length > 0">
     <thead>
       <tr>
         <th>ID</th>
@@ -11,6 +17,7 @@
         <th>Vendedor</th>
         <th>Fecha</th>
         <th>Total</th>
+        <th>Acciones</th>
       </tr>
     </thead>
     <tbody>
@@ -18,14 +25,10 @@
         <td>{{ venta.idVenta }}</td>
         <td>{{ venta.cliente }}</td>
         <td>{{ venta.vendedor }}</td>
-        <td>{{ venta.fechaDate | date : "short" }}</td>
-        <td>{{ venta.total | currency : "PEN" }}</td>
-
+        <td>{{ venta.fechaDate | date : "shortDate" }}</td>
+        <td>{{ venta.total | currency : "PEN" : "symbol" : "1.2-2" }}</td>
         <td>
-          <button
-            class="btn btn-primary btn-sm"
-            (click)="verDetalle(venta.idVenta)"
-          >
+          <button class="venta-btn" (click)="verDetalle(venta.idVenta)">
             Ver detalle
           </button>
         </td>
@@ -33,7 +36,7 @@
     </tbody>
   </table>
 
-  <div class="mt-4">
-  
-</div>
+  <div class="no-data" *ngIf="ventas.length === 0">
+    <p>No hay ventas registradas.</p>
+  </div>
 </div>

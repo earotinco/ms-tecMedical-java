@@ -1,0 +1,71 @@
+:host {
+  font-family: 'Montserrat', sans-serif;
+  display: block;
+  padding: 20px;
+  background-color: var(--gris-claro);
+  color: var(--gris-oscuro);
+}
+
+.venta-form {
+  max-width: 850px;
+  margin: auto;
+  background-color: var(--blanco);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+h2 {
+  color: var(--azul);
+  font-weight: 600;
+  font-size: 1.8rem;
+  margin-bottom: 25px;
+  border-bottom: 2px solid var(--gris-claro);
+  padding-bottom: 10px;
+}
+
+mat-form-field.full-width {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.detalle-item {
+  background-color: var(--celeste);
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+button {
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+button[color="warn"] {
+  background-color: var(--rojo);
+  color: var(--blanco);
+}
+
+button[color="primary"] {
+  background-color: var(--azul);
+  color: var(--blanco);
+}
+
+button[color="accent"] {
+  background-color: var(--naranja);
+  color: var(--blanco);
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+h3 {
+  font-size: 1.4rem;
+  color: var(--azul);
+  margin-top: 20px;
+  text-align: right;
+}
