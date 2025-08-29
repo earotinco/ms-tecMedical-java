@@ -5,14 +5,13 @@
   </div>
 
   <nav class="sidebar-nav">
-    <a routerLink="/dashboard" routerLinkActive="active">
-      <i class="fas fa-chart-line"></i>
-      <span>Dashboard</span>
-    </a>
-    <a routerLink="/ventas" routerLinkActive="active">
+
+
+    <a (click)="irAVentas()">
       <i class="fas fa-file-invoice-dollar"></i>
       <span>Ventas</span>
     </a>
+
     <a routerLink="/clientes" routerLinkActive="active">
       <i class="fas fa-users"></i>
       <span>Clientes</span>
