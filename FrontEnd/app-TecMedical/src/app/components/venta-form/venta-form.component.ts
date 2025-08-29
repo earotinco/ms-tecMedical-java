@@ -1,79 +1,164 @@
-// venta-form.component.ts
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  FormArray,
+  Validators,
+  ReactiveFormsModule,
+} from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+
 import { ProductoService, Producto } from '../../services/producto.service';
 import { VentaService, VentaRequest } from '../../services/venta.service';
 
 @Component({
   selector: 'app-venta-form',
-  templateUrl: './venta-form.component.html'
+  standalone: true,
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatButtonModule,
+    MatSnackBarModule,
+  ],
+  templateUrl: './venta-form.component.html',
+  styleUrls: ['./venta-form.component.css'],
 })
 export class VentaFormComponent implements OnInit {
   productos: Producto[] = [];
   ventaForm: FormGroup;
+  totalGeneral: number = 0;
+
+  // ✅ Método para comparar productos en el mat-select
+  compararProductos = (p1: Producto, p2: Producto) =>
+    p1 && p2 ? p1.id === p2.id : p1 === p2;
 
   constructor(
     private fb: FormBuilder,
     private productoService: ProductoService,
-    private ventaService: VentaService
+    private ventaService: VentaService,
+    private snackBar: MatSnackBar
   ) {
     this.ventaForm = this.fb.group({
-      clienteId: [1], // Puedes cambiar esto por un selector de cliente
-      usuarioId: [2], // Puedes obtenerlo del login o del interceptor
-      detalles: this.fb.array([])
+      clienteId: ['', Validators.required],
+      usuarioId: [2],
+      detalles: this.fb.array([]),
     });
   }
 
   ngOnInit(): void {
-    this.productoService.listarProductos().subscribe((data: Producto[]) => {
-  this.productos = data;
-});
+    this.productoService.listarProductos().subscribe({
+      next: (data: Producto[]) => {
+        this.productos = data;
+      },
+      error: () => {
+        this.snackBar.open('Error al cargar productos', 'Cerrar', {
+          duration: 3000,
+        });
+      },
+    });
   }
 
-  get detalles() {
+  get detalles(): FormArray {
     return this.ventaForm.get('detalles') as FormArray;
   }
 
-  agregarDetalle() {
-    this.detalles.push(this.fb.group({
-      productoId: [''],
-      cantidad: [1],
+  agregarDetalle(): void {
+    const detalleForm = this.fb.group({
+      producto: [null, Validators.required],
+      cantidad: [1, [Validators.required, Validators.min(1)]],
       precioUnitario: [{ value: 0, disabled: true }],
-      subtotal: [{ value: 0, disabled: true }]
-    }));
+      subtotal: [{ value: 0, disabled: true }],
+    });
+
+    this.detalles.push(detalleForm);
   }
 
-  actualizarPrecioYSubtotal(index: number) {
+  eliminarDetalle(index: number): void {
+    this.detalles.removeAt(index);
+    this.calcularTotalGeneral();
+  }
+
+  actualizarPrecioYSubtotal(index: number): void {
     const detalle = this.detalles.at(index);
-    const productoId = detalle.get('productoId')?.value;
+    const producto = detalle.get('producto')?.value;
     const cantidad = detalle.get('cantidad')?.value;
 
-    const producto = this.productos.find(p => p.id === +productoId);
     if (producto) {
       const subtotal = producto.precio * cantidad;
       detalle.patchValue({
         precioUnitario: producto.precio,
-        subtotal: subtotal
+        subtotal: subtotal,
       });
+      this.calcularTotalGeneral();
     }
   }
 
-  enviarVenta() {
-    const detalles = this.detalles.getRawValue().map((d: any) => ({
-      productoId: d.productoId,
-      cantidad: d.cantidad,
-      precioUnitario: d.precioUnitario
-    }));
+  calcularTotalGeneral(): void {
+    this.totalGeneral = this.detalles.controls.reduce((acc, detalle) => {
+      const subtotal = detalle.get('subtotal')?.value || 0;
+      return acc + subtotal;
+    }, 0);
+  }
 
+  enviarVenta(): void {
+    if (this.detalles.length === 0) {
+      this.snackBar.open('Debe agregar al menos un producto', 'Cerrar', {
+        duration: 3000,
+      });
+      return;
+    }
+
+    if (!this.ventaForm.valid) {
+      this.snackBar.open(
+        'Formulario inválido. Verifique los campos.',
+        'Cerrar',
+        { duration: 3000 }
+      );
+      return;
+    }
+
+
+
+const detalles = this.detalles.getRawValue()
+  .filter((d: any) => d.producto && d.producto.id)
+  .map((d: any) => ({
+    productoId: d.producto.id,
+    cantidad: d.cantidad,
+    precioUnitario: d.precioUnitario,
+  }));
+
+
+    const usuarioId = this.ventaForm.value.usuarioId;
     const venta: VentaRequest = {
       clienteId: this.ventaForm.value.clienteId,
-      usuarioId: this.ventaForm.value.usuarioId,
-      detalles: detalles
+      detalles: detalles,
+      ...(usuarioId && { usuarioId }),
     };
 
+    console.log('Venta enviada:', venta);
+
     this.ventaService.registrarVenta(venta).subscribe({
-      next: (res) => alert('Venta registrada con éxito'),
-      error: (err) => console.error('Error al registrar venta', err)
+      next: () => {
+        this.snackBar.open('Venta registrada con éxito', 'Cerrar', {
+          duration: 3000,
+        });
+        this.ventaForm.reset();
+        this.detalles.clear();
+        this.totalGeneral = 0;
+      },
+      error: () => {
+        this.snackBar.open('Error al registrar venta', 'Cerrar', {
+          duration: 3000,
+        });
+      },
     });
   }
 }

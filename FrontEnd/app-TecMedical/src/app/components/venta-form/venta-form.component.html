@@ -1,1 +1,100 @@
-<p>venta-form works!</p>
+<form
+  [formGroup]="ventaForm"
+  (ngSubmit)="enviarVenta()"
+  class="venta-form"
+  style="padding: 20px; max-width: 800px; margin: auto"
+>
+  <h2>Registrar Venta</h2>
+
+  <!-- Selector de Cliente -->
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Cliente</mat-label>
+    <input matInput formControlName="clienteId" placeholder="ID del cliente" />
+    <mat-error *ngIf="ventaForm.get('clienteId')?.invalid"
+      >Seleccione un cliente</mat-error
+    >
+  </mat-form-field>
+
+  <div formArrayName="detalles">
+    <div
+      *ngFor="let detalle of detalles.controls; let i = index"
+      [formGroupName]="i"
+      class="detalle-item"
+      style="
+        margin-bottom: 20px;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 10px;
+      "
+    >
+      <!-- Selector de Producto -->
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Producto</mat-label>
+        <mat-select
+          formControlName="producto"
+          [compareWith]="compararProductos"
+          (selectionChange)="actualizarPrecioYSubtotal(i)"
+        >
+          <mat-option *ngFor="let p of productos" [value]="p">
+            {{ p.nombre }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="detalle.get('producto')?.hasError('required')">
+          Seleccione un producto
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Cantidad -->
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Cantidad</mat-label>
+        <input
+          matInput
+          type="number"
+          formControlName="cantidad"
+          (input)="actualizarPrecioYSubtotal(i)"
+        />
+        <mat-error *ngIf="detalle.get('cantidad')?.invalid"
+          >Cantidad debe ser mayor a 0</mat-error
+        >
+      </mat-form-field>
+
+      <!-- Precio Unitario -->
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Precio Unitario</mat-label>
+        <input matInput type="number" formControlName="precioUnitario" />
+        <!--disable-->
+      </mat-form-field>
+
+      <!-- Subtotal -->
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Subtotal</mat-label>
+        <input matInput type="number" formControlName="subtotal" />
+        <!--disable-->
+      </mat-form-field>
+
+      <!-- Botón eliminar -->
+      <button mat-raised-button color="warn" (click)="eliminarDetalle(i)">
+        Eliminar
+      </button>
+    </div>
+  </div>
+
+  <!-- Botón agregar producto -->
+  <button
+    mat-raised-button
+    color="primary"
+    type="button"
+    (click)="agregarDetalle()"
+  >
+    Agregar Producto
+  </button>
+
+  <!-- Total General -->
+  <div style="margin-top: 20px">
+    <h3>Total General: {{ totalGeneral | currency : "PEN" }}</h3>
+  </div>
+
+  <!-- Botón enviar -->
+  <button mat-raised-button color="accent" type="submit">
+    Registrar Venta
+  </button>
+</form>
