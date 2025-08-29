@@ -1,0 +1,31 @@
+<div class="container mt-5">
+  <h2>Registrar Cliente</h2>
+  <form (ngSubmit)="guardar()">
+    <div class="mb-3">
+      <label>Nombre</label>
+      <input type="text" [(ngModel)]="cliente.nombre" name="nombre" class="form-control" required>
+    </div>
+    <div class="mb-3">
+      <label>Apellido</label>
+      <input type="text" [(ngModel)]="cliente.apellido" name="apellido" class="form-control" required>
+    </div>
+    <div class="mb-3">
+      <label>DNI</label>
+      <input type="text" [(ngModel)]="cliente.dni" name="dni" class="form-control" required>
+    </div>
+    <div class="mb-3">
+      <label>Correo</label>
+      <input type="email" [(ngModel)]="cliente.correo" name="correo" class="form-control" required>
+    </div>
+    <div class="mb-3">
+      <label>Teléfono</label>
+      <input type="text" [(ngModel)]="cliente.telefono" name="telefono" class="form-control" required>
+    </div>
+    <div class="mb-3">
+      <label>Dirección</label>
+      <input type="text" [(ngModel)]="cliente.direccion" name="direccion" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-success">Guardar</button>
+  </form>
+</div>
+
