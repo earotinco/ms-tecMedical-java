@@ -13,7 +13,7 @@ import { SideBarComponent } from './components/fragments/side-bar/side-bar.compo
 @Component({
   selector: 'app-root',
   standalone:true,
-  imports: [RouterOutlet, SideBarComponent],
+  imports: [RouterOutlet, ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

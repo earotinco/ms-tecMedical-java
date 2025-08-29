@@ -4,12 +4,13 @@ import { Cliente } from '../../../models/cliente.model';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
+
 @Component({
   selector: 'app-cliente-listar',
    standalone: true,
   imports: [CommonModule, RouterModule],
   templateUrl: './cliente-listar.component.html',
-  styleUrl: './cliente-listar.component.css'
+  styleUrls: ['./cliente-listar.component.css']
 })
 export class ClienteListarComponent implements OnInit {
   clientes: Cliente[] = [];
@@ -17,8 +18,9 @@ export class ClienteListarComponent implements OnInit {
   constructor(private clienteService: ClienteService) {}
 
   ngOnInit(): void {
-    this.clienteService.listar().subscribe(data => {
-      this.clientes = data;
+    this.clienteService.listar().subscribe({
+      next: data => this.clientes = data,
+      error: err => console.error('Error al cargar clientes', err)
     });
   }
 
