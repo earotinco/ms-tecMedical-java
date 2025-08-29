@@ -9,11 +9,11 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'] 
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
 
-  usuario: Usuario = { usuario: '', password: '' };
+  usuario: Usuario = { username: '', password: '' };
 
   constructor(private usuarioService: UsuarioService) {}
 
