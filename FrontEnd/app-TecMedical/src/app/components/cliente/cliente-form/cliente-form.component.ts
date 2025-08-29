@@ -13,13 +13,15 @@ import { CommonModule } from '@angular/common';
 })
 export class ClienteFormComponent {
 
- cliente: Cliente = {
+cliente: Cliente = {
+    id: 0,
     nombre: '',
     apellido: '',
     dni: '',
     correo: '',
     telefono: '',
-    direccion: ''
+    direccion: '',
+    
   };
 
   constructor(private clienteService: ClienteService) {}
