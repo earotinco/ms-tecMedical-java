@@ -3,6 +3,7 @@ import { UsuarioService } from '../../../services/usuario.service';
 import { Usuario } from '../../../models/usuario.model';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -15,17 +16,18 @@ export class LoginComponent {
 
   usuario: Usuario = { username: '', password: '' };
 
-  constructor(private usuarioService: UsuarioService) {}
+  constructor(private usuarioService: UsuarioService, private router: Router ) {}
 
   login(): void {
     this.usuarioService.login(this.usuario).subscribe({
       next: res => {
         console.log(' Login exitoso', res);
         alert('Bienvenido');
+        this.router.navigate(['/ventas']);
       },
       error: err => {
         console.error(' Error de login', err);
-        alert('Credenciales incorrectas');
+          alert(`Error ${err.status}: ${err.error?.message || err.message}`);
       }
     });
   }

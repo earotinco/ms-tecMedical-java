@@ -17,5 +17,17 @@ irAVentas() {
   this.router.navigate(['/ventas']);
 }
 
+irAClientes() {
+  this.router.navigate(['/clientes']);
+}
+
+irACategorias() {
+  this.router.navigate(['/categorias']);
+}
+
+irAProductos() {
+  this.router.navigate(['/productos']);
+}
+
 
 }

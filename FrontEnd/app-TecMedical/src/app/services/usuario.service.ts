@@ -9,6 +9,12 @@ import { Observable } from 'rxjs';
 export class UsuarioService {
  private loginUrl = 'http://localhost:8080/api/auth/login';
 
+ /**/
+
+ private username: string = '';
+  private password: string = '';
+
+  /**/
   constructor(private http: HttpClient) {}
 
   login(usuario: Usuario): Observable<any> {
