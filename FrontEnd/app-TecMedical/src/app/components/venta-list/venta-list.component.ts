@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Router } from '@angular/router';
-
+import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { VentaService, VentaConFechaDate, DetalleVentaResponse } from '../../services/venta.service';
 
@@ -10,7 +10,7 @@ import { VentaService, VentaConFechaDate, DetalleVentaResponse } from '../../ser
 @Component({
   selector: 'venta-list-comp',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './venta-list.component.html',
   styleUrls: ['./venta-list.component.css']
 })

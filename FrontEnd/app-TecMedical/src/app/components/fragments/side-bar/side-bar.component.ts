@@ -29,5 +29,4 @@ irAProductos() {
   this.router.navigate(['/productos']);
 }
 
-
 }
