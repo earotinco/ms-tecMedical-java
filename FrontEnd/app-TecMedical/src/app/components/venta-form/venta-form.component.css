@@ -1,5 +1,5 @@
 :host {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   display: block;
   padding: 20px;
   background-color: var(--gris-claro);
@@ -68,4 +68,46 @@ h3 {
   color: var(--azul);
   margin-top: 20px;
   text-align: right;
+}
+
+mat-expansion-panel {
+  margin-bottom: 15px;
+  background-color: var(--celeste);
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+mat-expansion-panel-header {
+  background-color: var(--azul);
+  color: var(--blanco);
+  font-weight: 500;
+  border-radius: 8px 8px 0 0;
+}
+
+mat-form-field input[readonly] {
+  color: var(--gris-oscuro) !important;
+}
+
+mat-form-field.readonly-field {
+  background-color: var(--gris-claro);
+  border-radius: 6px;
+  padding: 4px 8px;
+  opacity: 0.9;
+}
+
+mat-form-field.readonly-field input {
+  color: var(--gris-oscuro);
+  font-weight: 300;
+  background-color: transparent;
+  border: none;
+}
+
+mat-form-field.readonly-field.mat-form-field .mat-form-field-label {
+  color: var(--gris-oscuro) !important;
+  font-weight: 500;
+}
+
+::ng-deep mat-form-field.readonly-field .mat-mdc-floating-label {
+  color: var(--azul) !important;
+  font-weight: 500;
 }

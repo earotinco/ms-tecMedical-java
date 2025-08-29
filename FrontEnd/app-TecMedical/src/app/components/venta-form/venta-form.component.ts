@@ -15,6 +15,7 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { ProductoService, Producto } from '../../services/producto.service';
 import { VentaService, VentaRequest } from '../../services/venta.service';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @Component({
   selector: 'app-venta-form',
@@ -27,6 +28,7 @@ import { VentaService, VentaRequest } from '../../services/venta.service';
     MatSelectModule,
     MatButtonModule,
     MatSnackBarModule,
+    MatExpansionModule,
   ],
   templateUrl: './venta-form.component.html',
   styleUrls: ['./venta-form.component.css'],

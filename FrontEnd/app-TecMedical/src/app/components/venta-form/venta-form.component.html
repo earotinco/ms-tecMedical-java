@@ -15,17 +15,18 @@
     >
   </mat-form-field>
 
-  <div formArrayName="detalles">
-    <div
+  <mat-accordion formArrayName="detalles">
+    <mat-expansion-panel
       *ngFor="let detalle of detalles.controls; let i = index"
       [formGroupName]="i"
-      class="detalle-item"
-      style="
-        margin-bottom: 20px;
-        border-bottom: 1px solid #ccc;
-        padding-bottom: 10px;
-      "
     >
+      <mat-expansion-panel-header>
+        <mat-panel-title> Producto {{ i + 1 }} </mat-panel-title>
+        <mat-panel-description>
+          {{ detalle.get("producto")?.value?.nombre || "Sin seleccionar" }}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
       <!-- Selector de Producto -->
       <mat-form-field appearance="fill" class="full-width">
         <mat-label>Producto</mat-label>
@@ -52,31 +53,29 @@
           formControlName="cantidad"
           (input)="actualizarPrecioYSubtotal(i)"
         />
-        <mat-error *ngIf="detalle.get('cantidad')?.invalid"
-          >Cantidad debe ser mayor a 0</mat-error
-        >
+        <mat-error *ngIf="detalle.get('cantidad')?.invalid">
+          Cantidad debe ser mayor a 0
+        </mat-error>
       </mat-form-field>
 
-      <!-- Precio Unitario -->
-      <mat-form-field appearance="fill" class="full-width">
-        <mat-label>Precio Unitario</mat-label>
-        <input matInput type="number" formControlName="precioUnitario" readonly/>
-        <!--disable-->
-      </mat-form-field>
+     <!-- Precio Unitario -->
+<mat-form-field appearance="fill" class="full-width readonly-field" floatLabel="always">
+  <mat-label>Precio Unitario</mat-label>
+  <input matInput type="number" formControlName="precioUnitario" [disabled]="true" />
+</mat-form-field>
 
-      <!-- Subtotal -->
-      <mat-form-field appearance="fill" class="full-width">
-        <mat-label>Subtotal</mat-label>
-        <input matInput type="number" formControlName="subtotal" readonly/>
-        <!--disable-->
-      </mat-form-field>
+<!-- Subtotal -->
+<mat-form-field appearance="fill" class="full-width readonly-field" floatLabel="always">
+  <mat-label>Subtotal</mat-label>
+  <input matInput type="number" formControlName="subtotal" [disabled]="true" />
+</mat-form-field>
 
       <!-- Botón eliminar -->
       <button mat-raised-button color="warn" (click)="eliminarDetalle(i)">
         Eliminar
       </button>
-    </div>
-  </div>
+    </mat-expansion-panel>
+  </mat-accordion>
 
   <!-- Botón agregar producto -->
   <button
