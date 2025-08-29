@@ -41,4 +41,12 @@ public class CategoriaService {
 			categoriaRepository.save(categoria);
 		}
 	}
+	public void activar(Integer id) {
+	    Categoria categoria = obtenerPorId(id);
+	    if(categoria != null) {
+	        categoria.setEstado(true);
+	        guardar(categoria);
+	    }
+	}
+
 }

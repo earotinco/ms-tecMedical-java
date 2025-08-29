@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -51,5 +52,10 @@ public class CategoriaController {
     @PreAuthorize("hasAnyRole('Administrador','Vendedor')")
     public void desactivarCategoria(@PathVariable Integer id) {
         categoriaService.desactivar(id);
+    }
+    @PutMapping("/{id}/activar")
+    @PreAuthorize("hasAnyRole('Administrador','Vendedor')")
+    public void activarCategoria(@PathVariable Integer id) {
+        categoriaService.activar(id);
     }
 }

@@ -1,0 +1,49 @@
+<div class="container mt-4">
+  <h2>Listado de Categorías</h2>
+  <button class="btn btn-primary mb-3" (click)="toggleFiltro()">
+    {{ mostrarTodas ? 'Mostrar solo activas' : 'Mostrar todas' }}
+  </button>
+
+  <div *ngIf="categorias.length === 0" class="alert alert-info">
+    No hay categorías disponibles.
+  </div>
+
+  <table class="table table-striped table-bordered" *ngIf="categorias.length > 0">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Descripción</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let categoria of categorias">
+        <td>{{ categoria.idCategoria }}</td>
+        <td>{{ categoria.nombre }}</td>
+        <td>{{ categoria.descripcion || '—' }}</td>
+        <td>
+          <span class="badge" [ngClass]="categoria.estado ? 'bg-success' : 'bg-danger'">
+            {{ categoria.estado ? 'Activo' : 'Inactivo' }}
+          </span>
+        </td>
+        <td>
+          <button
+            *ngIf="categoria.estado"
+            class="btn btn-danger btn-sm"
+            (click)="desactivar(categoria.idCategoria)">
+            Desactivar
+          </button>
+
+          <button
+            *ngIf="!categoria.estado"
+            class="btn btn-success btn-sm"
+            (click)="activar(categoria.idCategoria)">
+            Activar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
