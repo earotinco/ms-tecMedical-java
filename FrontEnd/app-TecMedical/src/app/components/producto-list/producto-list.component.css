@@ -1,0 +1,108 @@
+
+body {
+  background-color: var(--light-blue);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.login-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-card {
+  background-color: var(--blanco);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.logo {
+  width: 120px;
+  margin-bottom: 1rem;
+}
+
+.login-header h2 {
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+.login-header p {
+  color: var(--dark-gray);
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.2rem;
+  text-align: left;
+
+}
+
+.input-icon {
+  position: relative;
+  width: 100%;
+}
+
+.input-icon input {
+  padding-left: 35px;
+  width: calc(100% - 2px); /* Ajusta para evitar overflow */
+  height: 40px;
+  border: 1px solid var(--gris-claro);
+  border-radius: 5px;
+  font-size: 1rem;
+  box-sizing: border-box; /* Asegura que el padding no rompa el layout */
+}
+
+.input-icon i {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--dark-gray);
+}
+
+
+
+.login-button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 5px;
+  width: 100%;
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+  background-color: var(--accent-color);
+}
+
+.login-links {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+}
+
+.login-links a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.login-footer {
+  margin-top: 1.5rem;
+  font-size: 0.8rem;
+  color: var(--dark-gray);
+}

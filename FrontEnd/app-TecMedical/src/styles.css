@@ -29,3 +29,102 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   padding: 20px;
 }
 
+.login-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: var(--celeste);
+}
+
+.login-card {
+  background-color: var(--blanco);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.login-card .logo {
+  width: 120px;
+  margin-bottom: 1rem;
+}
+
+.login-card h2 {
+  color: var(--azul);
+  margin-bottom: 0.5rem;
+}
+
+.login-card p {
+  color: var(--gris-oscuro);
+  margin-bottom: 1.5rem;
+}
+
+.login-form {
+  text-align: left;
+}
+
+.form-group {
+  margin-bottom: 1.2rem;
+}
+
+.input-icon {
+  position: relative;
+}
+
+.input-icon i {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--gris-oscuro);
+}
+
+.input-icon input {
+  padding-left: 35px;
+  width: 100%;
+  height: 40px;
+  border: 1px solid var(--gris-claro);
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.login-button {
+  background-color: var(--azul);
+  color: var(--blanco);
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 5px;
+  width: 100%;
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+  background-color: var(--naranja);
+}
+
+.login-links {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+}
+
+.login-links a {
+  color: var(--azul);
+  text-decoration: none;
+}
+
+.login-footer {
+  margin-top: 1.5rem;
+  font-size: 0.8rem;
+  color: var(--gris-oscuro);
+}
