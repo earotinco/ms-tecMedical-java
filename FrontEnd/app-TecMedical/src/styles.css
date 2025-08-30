@@ -128,3 +128,108 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   font-size: 0.8rem;
   color: var(--gris-oscuro);
 }
+
+
+.clientes-container {
+  background-color: var(--blanco);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  margin-top: 2rem;
+}
+
+.clientes-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.clientes-header h2 {
+  color: var(--azul);
+  font-weight: bold;
+}
+
+.clientes-header a {
+  background-color: var(--verde);
+  color: var(--blanco);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.clientes-header a:hover {
+  background-color: var(--naranja);
+}
+
+.clientes-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.clientes-table th,
+.clientes-table td {
+  padding: 0.75rem;
+  border: 1px solid var(--gris-claro);
+  text-align: center;
+}
+
+.clientes-table thead {
+  background-color: var(--celeste);
+  color: var(--negro);
+}
+
+.clientes-table tbody tr:hover {
+  background-color: var(--gris-claro);
+}
+
+.clientes-table td {
+  color: var(--gris-oscuro);
+}
+
+.registro-container {
+  background-color: var(--blanco);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  margin-top: 2rem;
+}
+
+.registro-container h2 {
+  color: var(--azul);
+  font-weight: bold;
+}
+
+.form-label {
+  font-weight: 600;
+  color: var(--gris-oscuro);
+}
+
+.form-control {
+  border: 1px solid var(--gris-claro);
+  border-radius: 8px;
+  font-size: 1rem;
+  padding: 0.5rem 0.75rem;
+  transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+  border-color: var(--azul);
+  box-shadow: 0 0 5px rgba(22, 103, 190, 0.3);
+}
+
+.btn-success {
+  background-color: var(--verde);
+  border: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.btn-success:hover {
+  background-color: var(--naranja);
+}
+
+.text-primary {
+  color: var(--azul) !important;
+}

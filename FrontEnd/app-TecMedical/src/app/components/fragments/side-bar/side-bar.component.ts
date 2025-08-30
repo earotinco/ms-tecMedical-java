@@ -29,4 +29,7 @@ irAProductos() {
   this.router.navigate(['/productos']);
 }
 
+salir() {
+  this.router.navigate(['/login']);
+}
 }

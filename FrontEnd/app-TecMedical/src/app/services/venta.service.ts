@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-/* -------inicio ------- */
+
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -42,6 +42,7 @@ export class VentaService {
   private apiUrl = 'http://localhost:8080/api/ventas';
   private username = 'gloria_vend';
   private password = '123456';
+
 
   constructor(private http: HttpClient) {}
 

@@ -1,0 +1,6 @@
+.login-header img {
+  width: 120px; /* ajusta el tamaño según lo que se vea mejor */
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 1rem;
+}
